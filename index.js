@@ -50,6 +50,7 @@ var KerasModelViewer;
 		}
     this.layer_ndx = "model";
     this.graph = { layer: [] };
+    this.merge_layers_ndx = [];
 
     if(this._options.keras_ver == 1) {
       var KerasModelDef = require('./defs/keras_def_v1.js');
@@ -78,7 +79,7 @@ var KerasModelViewer;
     if(!r){ r = []}
     for(var i=0; i<a.length; i++){
         if(a[i].constructor == Array){
-            flattenArrayOfArrays(a[i], r);
+            this.flattenArrayOfArrays(a[i], r);
         }else{
             r.push(a[i]);
         }
@@ -98,7 +99,7 @@ var KerasModelViewer;
     }
 
     if (json.config.input_layers) {
-      var links = _flattenArrayOfArrays(json.config.input_layers)
+      var links = this.flattenArrayOfArrays(json.config.input_layers)
       for (i in links) {
         if (typeof links[i] == "string") this.dgraf.edges.push([name, links[i]])
       }
@@ -144,11 +145,11 @@ var KerasModelViewer;
         height: this._options.dims.h
       }
       if (layer.class_name == "Merge") {
-        merge_layers_ndx.push(i)
+        this.merge_layers_ndx.push(i)
       }
 
       if (layer.inbound_nodes && this.layer_ndx != 0) {
-        var conns = flattenArrayOfArrays(layer.inbound_nodes)
+        var conns = this.flattenArrayOfArrays(layer.inbound_nodes)
         //console.log(conns)
         for (j in conns){
             //console.log('draw_diag edges', conns[j], name)

@@ -1,6 +1,6 @@
 {
   "name": "keras-models-viewer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Viewer for Keras Models",
   "main": "index.js",
   "scripts": {
