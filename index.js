@@ -88,14 +88,13 @@ var KerasModelViewer;
 
   KerasModelViewer.prototype.add_model = function() {
     let json = this.json;
-    let dims = this._options.dims;
     var name = json.config.name || json.class_name
 
     this.dgraf.nodes[name]={
       label: name + "\n" +json.class_name,
       color: this.keras_args[json.class_name].color,
-      width: dims.w,
-      height: dims.h
+      width: this._options.dims.w,
+      height: this._options.dims.h
     }
 
     if (json.config.input_layers) {
@@ -112,7 +111,6 @@ var KerasModelViewer;
 
   KerasModelViewer.prototype.draw_diag = function() {
     let json = this.json;
-    let dims = this._options.dims;
 
     this.view.clear();
     this.dgraf = {
@@ -122,8 +120,8 @@ var KerasModelViewer;
 
     }
 
-    if (this._options.rankdir == "LR" && dims.w > dims.h) dims={w: dims.h, h: dims.w}
-    if (this._options.rankdir == "UD" && dims.w < dims.h) dims={w: dims.h, h: dims.w}
+    if (this._options.rankdir == "LR" && this._options.dims.w > this._options.dims.h) this._options.dims={w: this._options.dims.h, h: this._options.dims.w}
+    if (this._options.rankdir == "UD" && this._options.dims.w < this._options.dims.h) this._options.dims={w: this._options.dims.h, h: this._options.dims.w}
 
     this.add_model()
 
@@ -142,8 +140,8 @@ var KerasModelViewer;
       this.dgraf.nodes[name]={
         label: name + "\n" +layer.class_name,
         color: this.keras_args[layer.class_name].color,
-        width: dims.w,
-        height: dims.h
+        width: this._options.dims.w,
+        height: this._options.dims.h
       }
       if (layer.class_name == "Merge") {
         merge_layers_ndx.push(i)
@@ -183,7 +181,7 @@ var KerasModelViewer;
     var nodes = t.nodes
 
     var edges = t.edges
-      //console.log('showGraph edges', edges)
+
     g.setGraph(this._options)
 
     for(row of edges) {
@@ -227,7 +225,6 @@ var KerasModelViewer;
   }
 
   KerasModelViewer.prototype.draw_node = function(svgd, node, j) {
-    //console.log(node)
     var r = 5
     if (j === 0) { j="model" , r = Math.min(node.width, node.height)/2} else { j-- }
     var group = svgd.group().attr({"data-index":j,"stroke-width": 0.5})
