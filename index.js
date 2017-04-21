@@ -1,7 +1,5 @@
 var dagre = require('dagre');
-var jquery = require('jquery');
 var SVG = require('svg.js');
-require('svg.draggable.js');
 require('svg.panzoom.js');
 
 var KerasModelViewer;
