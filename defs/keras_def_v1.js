@@ -1,13 +1,12 @@
+KerasModelDef = {}
 
-var keras_layer = {
+KerasModelDef.keras_layer = {
 	class_name: "Dense",
 	name: "dense_",
 	"inbound_nodes": [],
-
-
 }
 
-var keras_args = {
+KerasModelDef.keras_args = {
 	InputLayer: {
 		help: "Input layer",
 		color: "#00ff00",
@@ -59,7 +58,7 @@ var keras_args = {
 		color: "#ff5656",
 		args: {
 			p: 0.5,
-			dim_ordering: 'tf'
+			//dim_ordering: 'tf'
 		}
 
 	},
@@ -68,7 +67,7 @@ var keras_args = {
 		color: "#ff5656",
 		args: {
 			p: 0.5,
-			dim_ordering: 'tf'
+			//dim_ordering: 'tf'
 		}
 
 	},
@@ -237,7 +236,7 @@ var keras_args = {
 			activity_regularizer: "activity_l2(0.01)",
 			W_constraint: "maxnorm(m=2)",
 			b_constraint: "maxnorm(m=2)",
-			dim_ordering: "tf",
+			//dim_ordering: "tf",
 			bias: true,
 			input_length: 300
 		}
@@ -262,7 +261,7 @@ var keras_args = {
 			activity_regularizer: "activity_l2(0.01)",
 			W_constraint: "maxnorm(m=2)",
 			b_constraint: "maxnorm(m=2)",
-			dim_ordering: "tf",
+			//dim_ordering: "tf",
 			bias: true,
 		}
 
@@ -286,7 +285,7 @@ var keras_args = {
 			activity_regularizer: "activity_l2(0.01)",
 			W_constraint: "maxnorm(m=2)",
 			b_constraint: "maxnorm(m=2)",
-			dim_ordering: "tf",
+			//dim_ordering: "tf",
 			bias: true
 		}
 
@@ -305,7 +304,7 @@ var keras_args = {
 		color: "#ff5656",
 		args: {
 			cropping: "((0, 0), (0, 0))",
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 	},
 
@@ -314,7 +313,7 @@ var keras_args = {
 		color: "#ff5656",
 		args: {
 			cropping: "((1, 1), (1, 1), (1, 1))",
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 	},
 
@@ -331,7 +330,7 @@ var keras_args = {
 		color: "#aaff56",
 		args: {
 			size: "(2, 2)",
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 	},
 
@@ -340,7 +339,7 @@ var keras_args = {
 		color: "#aaff56",
 		args: {
 			size: "(2, 2, 2)",
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 	},
 
@@ -357,7 +356,7 @@ var keras_args = {
 		color: "#aaff56",
 		args: {
 			padding: "(1, 1)",
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 	},
 
@@ -366,7 +365,7 @@ var keras_args = {
 		color: "#aaff56",
 		args: {
 			padding: "(1, 1, 1)",
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 	},
 
@@ -417,7 +416,7 @@ var keras_args = {
 			pool_size: "",
 			strides: "",
 			border_mode: 'valid',
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 
 	},
@@ -429,7 +428,7 @@ var keras_args = {
 			pool_size: "",
 			strides: "",
 			border_mode: 'valid',
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 
 	},
@@ -453,7 +452,7 @@ var keras_args = {
 			pool_size: "",
 			strides: "",
 			border_mode: 'valid',
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 	},
 
@@ -464,7 +463,7 @@ var keras_args = {
 			pool_size: "",
 			strides: "",
 			border_mode: 'valid',
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 	},
 
@@ -486,7 +485,7 @@ var keras_args = {
 		help: "Global max pooling operation for spatial data.",
 		color: "#ff0000",
 		args: {
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 	},
 
@@ -494,7 +493,7 @@ var keras_args = {
 		help: "Global average pooling operation for spatial data.",
 		color: "#ff0000",
 		args: {
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 	},
 
@@ -539,7 +538,7 @@ var keras_args = {
 			W_constraint: "maxnorm(m=2)",
 			b_constraint: "maxnorm(m=2)",
 			bias: true,
-			dim_ordering: "tf"
+			//dim_ordering: "tf"
 		}
 	},
 
@@ -642,7 +641,7 @@ var keras_args = {
 			depthwise_constraint: "",
 			pointwise_constraint: "",
 			b_constraint: "",
-			dim_ordering: "tf",
+			//dim_ordering: "tf",
 			bias: false
 		}
 
@@ -662,7 +661,7 @@ var keras_args = {
 		help: "Global average pooling operation for spatial data.",
 		color: "#000",
 		args: {
-			dim_ordering: "tf",
+			//dim_ordering: "tf",
 		}
 
 	},
@@ -867,7 +866,7 @@ var keras_args = {
 
 }
 
-keras_help = {
+KerasModelDef.keras_help = {
 	optimizer: "str (name of optimizer) or optimizer object. See optimizers.",
 	loss: "str (name of objective function) or objective function. See objectives.",
 	metrics: "list of metrics to be evaluated by the model during training and testing. Typically you will use  metrics=['accuracy']. See metrics.",
@@ -994,35 +993,6 @@ keras_help = {
 	depthwise_constraint: "instance of the constraints module (eg. maxnorm, nonneg), applied to the depthwise weights matrix.",
 	pointwise_constraint: "instance of the constraints module (eg. maxnorm, nonneg), applied to the pointwise weights matrix.",
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+module.exports = KerasModelDef;

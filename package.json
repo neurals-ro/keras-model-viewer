@@ -1,0 +1,30 @@
+{
+  "name": "keras-models-viewer",
+  "version": "0.0.2",
+  "description": "Viewer for Keras Models",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neurals-ro/keras-models-viewer.git"
+  },
+  "keywords": [
+    "keras",
+    "model",
+    "neural",
+    "networks"
+  ],
+  "author": "Christian Tzurcanu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neurals-ro/keras-models-viewer/issues"
+  },
+  "homepage": "https://github.com/neurals-ro/keras-models-viewer#readme",
+  "dependencies": {
+    "dagre": "0.7.4",
+    "svg.js":  "2.6.0",
+    "svg.panzoom.js": "0.0.1"
+  }
+}
