@@ -1,4 +1,4 @@
-# keras-models-viewer (https://neurals-ro.github.io/keras-models-viewer/)
+# keras-model-viewer
 
 View a Keras Model Object as a nice diagram with enabled zooming.
 
@@ -7,11 +7,11 @@ There is also a Keras model editor tool: (https://neurals-ro.github.io/keras-mod
 ## How to use
 
 ```
-new KerasModelsViewer( kerasModelObject, elementId);
+new KerasModelViewer( kerasModelObject, elementId);
 
-new KerasModelsViewer( kerasModelObject, document.getElementById(elementId));
+new KerasModelViewer( kerasModelObject, document.getElementById(elementId));
 
-new KerasModelsViewer( kerasModelObject, document.getElementById(elementId), {
+new KerasModelViewer( kerasModelObject, document.getElementById(elementId), {
   "rankdir": "LR", // "LR"  "UD"
   "nodesep": 20,
   "edgesep": 20,
@@ -30,7 +30,7 @@ new KerasModelsViewer( kerasModelObject, document.getElementById(elementId), {
 ```
 
 ```
-let model = new KerasModelsViewer( kerasModelObject, 'kerasmodel', {
+let model = new KerasModelViewer( kerasModelObject, 'kerasmodel', {
     "rankdir": "LR", // "LR"  "UD"
     "nodesep": 20,
     "edgesep": 20,
