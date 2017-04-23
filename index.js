@@ -25,17 +25,17 @@ var KerasModelViewer;
     this.json = json;
 
     this._options = {
-      "rankdir": "LR", // "LR"  "UD"
-      "nodesep": 20,
-      "edgesep": 20,
-      "ranksep": 40,
-      "marginx": 0,
-      "marginy": 0,
+      rankdir: "LR", // "LR"  "UD"
+      nodesep: 20,
+      edgesep: 20,
+      ranksep: 40,
+      marginx: 0,
+      marginy: 0,
       dims: {
         w:300,
         h:100
       },
-      "keras_ver": 1 // only option now;
+      keras_ver: 1 // only option now;
 		};
 
 		// Overwrites options
@@ -66,7 +66,7 @@ var KerasModelViewer;
     var input_arr = [];
     if (!arr1 || arr1 == [] || typeof arr1 != "Array") {
       if (this.layer_ndx == 0) return [];
-      return [source_layers[this.layer_ndx-1].config.name, layer];
+      return [this.source_layers[this.layer_ndx-1].config.name, layer];
     }
     for (i in arr1){
       var rec = flatten_input(layer, arr1[i])
@@ -126,10 +126,10 @@ var KerasModelViewer;
 
     this.add_model()
 
-    source_layers = json.config.layers? json.config.layers : json.config
-    source_layers.model = json
+    this.source_layers = json.config.layers? json.config.layers : json.config
+    this.source_layers.model = json
 
-    var ls= source_layers,name
+    var ls= this.source_layers,name
 
 
     for (i in ls){
@@ -159,7 +159,7 @@ var KerasModelViewer;
       } else {
         if (this.layer_ndx != 0 && this.layer_ndx != "model") {
            //console.log('draw_diag edges2', source_layers[layer_ndx - 1].config.name, name)
-          this.dgraf.edges.push([source_layers[this.layer_ndx - 1].config.name, name])
+          this.dgraf.edges.push([this.source_layers[this.layer_ndx - 1].config.name, name])
         }
       }
 
@@ -254,6 +254,7 @@ var KerasModelViewer;
 
     var edge = svgd.path(str).fill('none').stroke({width: 1}).attr({"stroke-linecap":"round", "stroke-linejoin":"round"})
     edge.marker('end', marker)
+    return edge;
   }
 
   KerasModelViewer.prototype.add_marker = function(svgd) {
@@ -267,17 +268,18 @@ var KerasModelViewer;
     draw = SVG(this._el).size('100%', '100%').panZoom();
 
     this.view = draw.group().attr({id:"diagram"});
-
-    this.draw_diag();
-    this.showGraph();
+    this.model();
   }
 
   KerasModelViewer.prototype.clear = function() {
     this.view.clear();
   }
 
-  KerasModelViewer.prototype.model = function() {
-
+  KerasModelViewer.prototype.model = function(newjson) {
+    if(newjson)
+      this.json = newjson;
+    this.draw_diag();
+    this.showGraph();
   }
 
   return KerasModelViewer;
