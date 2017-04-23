@@ -265,9 +265,9 @@ var KerasModelViewer;
   }
 
   KerasModelViewer.prototype.show = function() {
-    draw = SVG(this._el).size('100%', '100%').panZoom();
+    this.draw = SVG(this._el).size('100%', '100%').panZoom();
 
-    this.view = draw.group().attr({id:"diagram"});
+    this.view = this.draw.group().attr({id:"diagram"});
     this.model();
   }
 
