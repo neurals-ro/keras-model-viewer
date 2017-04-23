@@ -276,8 +276,11 @@ var KerasModelViewer;
     this.view.clear();
   }
 
-  KerasModelViewer.prototype.model = function() {
-
+  KerasModelViewer.prototype.model = function(newjson) {
+    if(newjson)
+      this.json = newjson;
+    this.draw_diag();
+    this.showGraph();
   }
 
   return KerasModelViewer;
