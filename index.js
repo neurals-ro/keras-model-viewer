@@ -273,7 +273,7 @@ var KerasModelViewer;
   }
 
   KerasModelViewer.prototype.clear = function() {
-
+    this.view.clear();
   }
 
   KerasModelViewer.prototype.model = function() {
