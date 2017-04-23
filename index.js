@@ -2,22 +2,29 @@ var dagre = require('dagre');
 var SVG = require('svg.js');
 require('svg.panzoom.js');
 
-var KerasModelViewer;
 
 (function (root, factory) {
 
 	/* CommonJS */
-  if (typeof exports == 'object') module.exports = factory()
+  if (typeof exports == 'object') {
+    module.exports = root.document ? factory(root, root.document) : function(w){ return factory(w, w.document) }
+  }
 
   /* AMD module */
-  else if (typeof define == 'function' && define.amd) define(factory)
+  else if (typeof define == 'function' && define.amd) {
+    define(function(){
+      return factory(root, root.document)
+    })
+  }
 
   /* Global */
-  else root.KerasModelViewer = factory()
+  else {
+    root.KerasModelViewer = factory(root, root.document)
+  }
 
-}(this, function () {
+}(typeof window !== "undefined" ? window : this, function (window, document) {
 
-  KerasModelViewer = function(json, el, options) {
+  var KerasModelViewer = window.KerasModelViewer = function(json, el, options) {
     if(!json) {
         console.log('KerasModelViewer: No Model provided.');
     }
@@ -132,8 +139,8 @@ var KerasModelViewer;
     var ls= this.source_layers,name
 
 
-    for (i in ls){
-      layer = ls[i]
+    for (let i in ls){
+      let layer = ls[i]
       if(layer.keras_version) return;
       this.layer_ndx = i
       name = layer.config.name ? layer.config.name : layer.name
@@ -185,11 +192,11 @@ var KerasModelViewer;
 
     g.setGraph(this._options)
 
-    for(row of edges) {
+    for(let row of edges) {
       g.setEdge(row[0], row[1])
     }
 
-    for(row in nodes) {
+    for(let row in nodes) {
       g.setNode(row, nodes[row])
     }
 
@@ -203,7 +210,7 @@ var KerasModelViewer;
     })
 
     var j=0
-    for (i in t.nodes) {
+    for (let i in t.nodes) {
       if (j == 0 ) {
         this.graph.layer.model = this.draw_node(t.svgd, t.nodes[i],j)
       } else {
@@ -284,5 +291,3 @@ var KerasModelViewer;
 
   return KerasModelViewer;
 }));
-
-exports = module.exports = KerasModelViewer;

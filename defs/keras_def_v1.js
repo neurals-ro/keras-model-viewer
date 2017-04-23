@@ -1,4 +1,4 @@
-KerasModelDef = {}
+let KerasModelDef = {}
 
 KerasModelDef.keras_layer = {
 	class_name: "Dense",

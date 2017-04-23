@@ -4,6 +4,8 @@
   "description": "SVG-based viewer for Keras models",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --config webpack.config.js --progress",
+    "build:prod": "webpack --config webpack.prod.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,7 +32,12 @@
   "homepage": "https://github.com/neurals-ro/keras-model-viewer#readme",
   "dependencies": {
     "dagre": "0.7.4",
-    "svg.js":  "2.6.0",
+    "svg.js": "2.6.0",
     "svg.panzoom.js": "0.0.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "uglify-js": "git://github.com/mishoo/UglifyJS2.git#harmony",
+    "webpack": "^2.4.1"
   }
 }
