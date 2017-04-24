@@ -47,7 +47,7 @@ require('svg.panzoom.js');
 
 		// Overwrites options
 		if (options) {
-			for (var i in options) {
+			for (let i in options) {
 				this._options[i] = options[i];
 			}
 		}
@@ -75,7 +75,7 @@ require('svg.panzoom.js');
       if (this.layer_ndx == 0) return [];
       return [this.source_layers[this.layer_ndx-1].config.name, layer];
     }
-    for (i in arr1){
+    for (let i in arr1){
       var rec = flatten_input(layer, arr1[i])
       if (rec == []) input_arr.push(rec)
     }
@@ -84,7 +84,7 @@ require('svg.panzoom.js');
 
   KerasModelViewer.prototype.flattenArrayOfArrays = function(a, r) {
     if(!r){ r = []}
-    for(var i=0; i<a.length; i++){
+    for(let i=0; i<a.length; i++){
         if(a[i].constructor == Array){
             this.flattenArrayOfArrays(a[i], r);
         }else{
@@ -107,7 +107,7 @@ require('svg.panzoom.js');
 
     if (json.config.input_layers) {
       var links = this.flattenArrayOfArrays(json.config.input_layers)
-      for (i in links) {
+      for (let i in links) {
         if (typeof links[i] == "string") this.dgraf.edges.push([name, links[i]])
       }
     }
@@ -158,7 +158,7 @@ require('svg.panzoom.js');
       if (layer.inbound_nodes && this.layer_ndx != 0) {
         var conns = this.flattenArrayOfArrays(layer.inbound_nodes)
         //console.log(conns)
-        for (j in conns){
+        for (let j in conns){
             //console.log('draw_diag edges', conns[j], name)
           if (conns[j] !== 0) this.dgraf.edges.push([conns[j], name])
         }
